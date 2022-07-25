@@ -24,7 +24,7 @@
               <div class="col-md-6 col-lg-6 col-xl-6">
                 <h5>Title: <span style="font-weight:normal"><%= @bug.title %></span></h5>
                 <h5>Description: <span style="font-weight:normal"> <%= @bug.description %></span></h5>
-                <h5>Deadline: <span style="font-weight:normal"> <%= @bug.deadline  %></span></h5>
+                <h5>Deadline: <span style="font-weight:normal"> <%= distance_of_time_in_words(@bug.deadline, Time.now)  %></span></h5>
                 <h5>Bug Type: <span style="font-weight:normal"> <%= @bug.bug_type %></span></h5>
                 <h5>Bug Status: <span style="font-weight:normal"> <%= @bug.status %></span></h5>
                 <h5>Bug Create: <span style="font-weight:normal"> <%= @bug.user.name  %></span></h5>
