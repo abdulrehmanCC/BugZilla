@@ -1,0 +1,61 @@
+<section >
+  <div class="container py-5">
+  <div class="row justify-content-center mb-3">
+    <h1> Bug </h1> <br>
+  </div>
+   
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
+            <div class="row">
+             <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                      <%= image_tag @bug.image_url(:thumb) if @bug.image? %>
+                      
+                      <a href="#!">
+                        <div class="hover-overlay">
+                          <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                        </div>
+                      </a>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-6 col-xl-6">
+                <h5>Title: <span style="font-weight:normal"><%= @bug.title %></span></h5>
+                <h5>Description: <span style="font-weight:normal"> <%= @bug.description %></span></h5>
+                <h5>Deadline: <span style="font-weight:normal"> <%= @bug.deadline  %></span></h5>
+                <h5>Bug Type: <span style="font-weight:normal"> <%= @bug.bug_type %></span></h5>
+                <h5>Bug Status: <span style="font-weight:normal"> <%= @bug.status %></span></h5>
+                <h5>Bug Create: <span style="font-weight:normal"> <%= @bug.user.name  %></span></h5>
+                <h5>Bug Developer: <span style="font-weight:normal"> <%= @bug.developer.name if @bug.developer_id? %></span></h5>         
+              </div>
+
+              <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">                     
+                <div class="d-flex flex-column mt-1">
+                 <%= button_to "Back to projects", project_path(@project),  method: :get %>
+                      <hr>
+                <%= button_to "EditBug", edit_project_bug_path(@project, @bug),  method: :get %> <hr>
+
+                        <%= button_to "DeleteBug", project_bug_path(@project, @bug), method: :delete %>                     
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+

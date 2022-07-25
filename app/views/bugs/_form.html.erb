@@ -1,0 +1,100 @@
+
+
+<div class="container center_div">
+<h2> Bug</h2>
+<div class="card">
+  <div class="card-body">
+  <div class="alert alert-primary ml-auto" role="alert">
+   <% if @bug.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+      <ul>
+        <% @bug.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+  
+    <div class="mb-3">
+      <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+    </div>
+
+    <div class="mb-3">
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+    </div>
+
+ <div class="mb-3">
+    <%= form.label :deadline, style: "display: block" %>
+    <%= form.datetime_field :deadline %>
+</div>
+
+ <div class="mb-3">
+<%= form.file_field :image, accept: 'image/png,image/gif' %> 
+<% if @bug.image?%>
+<br><br>
+<strong>Old File:</strong>
+<%= @bug.image  %>
+<%end%>
+</div>
+
+ <div class="mb-3">
+   <%= form.label :developer_id %>
+   <%= form.collection_select :developer_id, @project.users.all.where(role: "developer"),
+  :id, :name, { include_blank: true }, 
+   { multiple: false } %>
+</div>
+
+ <div class="mb-3">
+     <%= label :bug_type, 'Type: ' %>
+      <%= form.radio_button :bug_type, 'bug', :checked => true %>
+      <%= label :bug_type, 'Bug' %>
+      <%= form.radio_button :bug_type, 'feature' %>
+      <%= label :bug_type, 'feature' %>
+</div>
+
+ <div class="mb-3">
+ <% if @bug.status == "completed"%>
+<% bug_status = ['new_project_bug', 'started', 'completed'] %>
+     <% else %> 
+<% bug_status = ['new_project_bug', 'started', 'resolved'] %>
+     <% end%>
+      <%= form.label :status, 'Status:' %>
+      <%= form.select :status, bug_status.compact_blank %>
+</div>
+
+ <div>
+    <%= form.submit "Submit Bug", class: "btn btn-primary" %> 
+  </div>
+
+    <div>
+  <%= link_to "Back to projects", projects_path %>
+</div>
+  </div>
+</div>
+
+</div>
+
+
+<%= stylesheet_link_tag "project_styles" %>
+
+<script src="<%= asset_path 'bug_script' %>"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

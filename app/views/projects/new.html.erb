@@ -1,0 +1,10 @@
+
+<%=form_with(model: @project, url: projects_path) do |form| %>
+
+<%= render partial: 'form', locals: {form: form} %>
+
+<%end%>
+
+<%= stylesheet_link_tag "project_styles" %>
+
+<script src="<%= asset_path 'project_script' %>"></script>

@@ -1,0 +1,26 @@
+<%= form_with(model: [@project, @bug], url: project_bugs_path) do |form| %>
+  
+<%= render partial: 'form', locals: {form: form} %>
+
+<% end %>
+
+
+<%= stylesheet_link_tag "project_styles" %>
+
+<script src="<%= asset_path 'bug_script' %>"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

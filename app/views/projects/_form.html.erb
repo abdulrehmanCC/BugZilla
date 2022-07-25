@@ -1,0 +1,70 @@
+
+<div class="container center_div">
+
+<h2>Project</h2>
+<div class="card">
+  <div class="card-body">
+
+  <div class="alert alert-primary ml-auto" role="alert">
+    <% if @project.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+        <% @project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+  
+
+    <div class="mb-3">
+      <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+    </div>
+
+    <div class="mb-3">
+   <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+    </div>
+
+ <div class="mb-3">
+
+   <div id="list1" class="dropdown-check-list" tabindex="100">
+    <%= form.label :Users, style: "display: block" %>
+  
+  <span class="anchor">Select Users</span>
+  <ul class="items">
+   <%= form.collection_check_boxes :user_ids, User.all.where.not(role: "manager"), :id, :name do |m| %> 
+
+  <li> <%= m.check_box %>  <%= m.label %></li>
+    <% end %> 
+  
+    </ul>
+</div>
+
+</div>
+
+ <div>
+    <%= form.submit "Submit Project", class: "btn btn-primary" %> 
+  </div>
+
+    <div>
+  <%= link_to "Back to projects", projects_path %>
+</div>
+
+
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+<%= stylesheet_link_tag "project_styles" %>

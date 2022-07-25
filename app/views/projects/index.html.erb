@@ -1,0 +1,51 @@
+
+<section >
+  <div class="container py-5">
+  <div class="row justify-content-center mb-3">
+    <h1> Projects  </h1> 
+     <% if can? :manage, Project %>
+    <h4> <%= link_to "Create a new project", new_project_path %>  </h4> <br><hr>
+     <%end%>
+    </div>
+     <% @projects.each do |project| %>
+    
+    <div class="row justify-content-center mb-3">
+
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
+            <div class="row">
+
+              <div class="col-md-6 col-lg-6 col-xl-6">
+                <h5> Name: <span style="font-weight:normal"> <%= project.name %></span></h5>
+                <h5> Description: <span style="font-weight:normal"> <%= project.description %></span></h5>
+              </div>
+              <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+       
+                
+                
+                <div class="d-flex flex-column mt-1">
+                      <%= button_to "ShowProject", project_path(project),  method: :get %> 
+                      <hr>
+                      <% if can? :edit, project %>
+                      <%= button_to "EditProject", edit_project_path(project),  method: :get %> <hr>
+                      <%= button_to "Delete Project", project_path(project), method: :delete %>
+
+                      <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <%end%>
+
+  </div>
+
+</section>
+
+
+

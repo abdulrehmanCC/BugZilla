@@ -1,0 +1,11 @@
+<%# 
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> %>
+
+
+<%= form_with(model: [@project, @bug], url: project_bug_path) do |form| %>
+<%= render partial: 'form', locals: {form: form, stat: @bug.status} %>
+<% end %>
+
+<script src="<%= asset_path 'bug_script' %>"></script>
