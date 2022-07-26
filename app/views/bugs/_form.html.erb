@@ -58,9 +58,9 @@
 
  <div class="mb-3">
  <% if @bug.status == "completed"%>
-<% bug_status = ['new_project_bug', 'started', 'completed'] %>
+<% bug_status = ['new_bug', 'started', 'completed'] %>
      <% else %> 
-<% bug_status = ['new_project_bug', 'started', 'resolved'] %>
+<% bug_status = ['new_bug', 'started', 'resolved'] %>
      <% end%>
       <%= form.label :status, 'Status:' %>
       <%= form.select :status, bug_status.compact_blank %>

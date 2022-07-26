@@ -6,6 +6,7 @@ class User < ApplicationRecord
   # belongs_to :created_bugs, class_name: "Bug", optional: true
   
   validates :name, presence: true
+  validates :role, presence: true #added after rspec changes
   has_many :bugs, dependent: :destroy
   has_many :created_bugs, foreign_key: :user_id, class_name: "Bug"
   has_many :assigned_bugs, foreign_key: :developer_id, class_name: "Bug"

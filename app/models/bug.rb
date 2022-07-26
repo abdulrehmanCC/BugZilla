@@ -1,8 +1,8 @@
 class Bug < ApplicationRecord
-    belongs_to :user, optional: true
+    belongs_to :user, required: true
     belongs_to :developer, class_name: "User", optional: true
     belongs_to :project
-    enum status: {new_project_bug: 0, started: 1, completed: 2, resolved: 3}
+    enum status: {new_bug: 0, started: 1, completed: 2, resolved: 3}
     enum bug_type: {feature: 0, bug: 1}
     validate :image_type
     mount_uploader :image, ImageUploader
