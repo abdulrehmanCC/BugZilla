@@ -91,3 +91,5 @@ gem 'jquery-rails'
 gem "sassc-rails"
 gem 'bootstrap', '~> 5.2.0'
 gem 'rails-controller-testing'
+# gem "factory_girl_rails", "~> 4.0"
+gem "factory_bot_rails"
